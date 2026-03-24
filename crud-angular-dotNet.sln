@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apiDotNet", "apiDotNet", "{275FB9B1-4689-1090-891A-9B369735B714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudComAngular", "apiDotNet\CrudComAngular\CrudComAngular.csproj", "{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34905810-3CE9-0AC6-0E90-D7BAF2E7AAF8} = {275FB9B1-4689-1090-891A-9B369735B714}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8A0E8E4-1ABA-4770-99C1-FE373985D5FD}
+	EndGlobalSection
+EndGlobal
