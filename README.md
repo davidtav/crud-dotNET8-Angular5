@@ -66,9 +66,10 @@ Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com
 
 ---
 
-## 📝 Convenções
+## 📝 Licença
 
-- **Commits:** Mensagens claras em português ou inglês.
-- **Backend:** PascalCase para classes e métodos; camelCase para parâmetros.
-- **Frontend:** Seguir o Style Guide oficial do Angular (Pastas por feature, nomenclatura `kebab-case`).
-- **API:** Retornos consistentes utilizando `IActionResult`.
+Este projeto está sob a licença [MIT](./LICENSE). sendo para fins de estudo e prática. Sinta-se à vontade para usar como referência!
+
+---
+## 👨‍💻 Autor
+Desenvolvido por [David Tavares](https://github.com/davidtav) 🚀
