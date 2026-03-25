@@ -1,6 +1,14 @@
 # CRUD Angular & .NET 8
 
-Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com um frontend em **Angular 5** e um backend em **ASP.NET Core 8.0** utilizando **MySQL**.
+Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com um frontend em **Angular 5** e um backend em **ASP.NET Core 8.0** utilizando **MySQL** seguindo padrões de design como Repository Pattern e Service Layer.
+
+🏗️ Arquitetura do Sistema
+A aplicação foi construida para separar responsabilidades, facilitando a manutenção e testes:
+
+Controller: Apenas gerencia as rotas e respostas HTTP.
+Service Layer: Centraliza a lógica de negócio.
+Repository Pattern: Isola o acesso a dados (EF Core) da lógica de negócio.
+Dependency Injection: Acoplamento fraco entre as camadas.
 
 ## 🛠️ Tecnologias e Versões
 
@@ -37,7 +45,7 @@ Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com
     ```bash
     dotnet run
     ```
-    A API estará disponível em `http://localhost:5000` ou similar (verifique o console). O Swagger pode ser acessado em `/swagger`.
+    A API estará disponível em `http://localhost:5227` ou similar (verifique o console). O Swagger pode ser acessado em `/swagger`.
 
 ### Configuração do Frontend (`angular-simple-crud`)
 1.  Instale as dependências:
@@ -55,10 +63,12 @@ Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com
 ## 📂 Estrutura do Projeto
 
 - `apiDotNet/CrudComAngular/`: Código fonte do backend .NET 8.
-  - `Controllers/`: Endpoints da API.
-  - `Data/`: Contexto do Entity Framework (`AppDbContext`).
-  - `Models/`: Classes de entidade.
-  - `Migrations/`: Histórico de migrações do banco de dados.
+  - `Controllers/`: Endpoints enxutos (Lean Controllers).
+  - `Services/`: Camada de lógica de negócio e regras.
+  - `Interfaces/`: Contratos para Repositórios e Serviços.
+  - `Repositories/`: Implementação do acesso a dados.
+  - `Data/`: Contexto do EF Core (AppDbContext).
+  - `Models/`: Entidades do banco de dados (utilizando C# required members).
 - `angular-simple-crud/`: Código fonte do frontend Angular 5.
   - `src/app/models/`: Modelos TypeScript.
   - `src/app/services/`: Serviços para comunicação com a API.
