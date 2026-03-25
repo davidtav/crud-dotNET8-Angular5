@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using CrudComAngular.Data;
-using Microsoft.AspNetCore.Mvc;
+using CrudComAngular.Interfaces;
 using CrudComAngular.Models;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrudComAngular.Controllers
 {
@@ -13,31 +9,33 @@ namespace CrudComAngular.Controllers
     [Route("api/[controller]")]
     public class ColaboradoresController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
-        public ColaboradoresController(AppDbContext appDbContext)
+        // 1. Injetamos a interface do SERVICE, e não mais o banco de dados!
+        private readonly IColaboradorService _colaboradorService;
+
+        public ColaboradoresController(IColaboradorService colaboradorService)
         {
-            _appDbContext = appDbContext;
+            _colaboradorService = colaboradorService;
         }
+
         [HttpPost]
         public async Task<IActionResult> AddColaborador(Colaborador colaborador)
         {
-            _appDbContext.Colaboradores.Add(colaborador);
-            await _appDbContext.SaveChangesAsync();
-            return Ok(colaborador);
+            var novoColaborador = await _colaboradorService.AddAsync(colaborador);
+            return Ok(novoColaborador);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetColaboradores()
         {
-            
-            var colaboradores = await _appDbContext.Colaboradores.ToListAsync();
+            var colaboradores = await _colaboradorService.GetAllAsync();
             return Ok(colaboradores);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetColaboradorById(int id)
+        public async Task<IActionResult> GetColaboradorById(int id)
         {
-            var colaborador = _appDbContext.Colaboradores.FirstOrDefault(c => c.Id == id);
+           
+            var colaborador = await _colaboradorService.GetByIdAsync(id);
             if (colaborador == null)
             {
                 return NotFound();
@@ -48,29 +46,25 @@ namespace CrudComAngular.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateColaborador(int id, Colaborador colaborador)
         {
-            var existingColaborador = _appDbContext.Colaboradores.FirstOrDefault(c => c.Id == id);
-            if (existingColaborador == null)
+            // Toda a lógica de verificar se existe foi para o Service
+            var colaboradorAtualizado = await _colaboradorService.UpdateAsync(id, colaborador);
+            if (colaboradorAtualizado == null)
             {
                 return NotFound();
             }
-            existingColaborador.Name = colaborador.Name;
-            existingColaborador.Country = colaborador.Country;
-            await _appDbContext.SaveChangesAsync();
-            return Ok(existingColaborador);
+            return Ok(colaboradorAtualizado);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteColaborador(int id)
         {
-            var colaborador = _appDbContext.Colaboradores.FirstOrDefault(c => c.Id == id);
-            if (colaborador == null)
+            // O Service nos retorna true se deletou, e false se não achou o ID
+            var sucesso = await _colaboradorService.DeleteAsync(id);
+            if (!sucesso)
             {
                 return NotFound();
             }
-            _appDbContext.Colaboradores.Remove(colaborador);
-            await _appDbContext.SaveChangesAsync();
             return NoContent();
         }
-
     }
 }
