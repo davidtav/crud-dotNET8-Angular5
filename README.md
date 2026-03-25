@@ -2,13 +2,13 @@
 
 Este projeto é uma aplicação CRUD (Create, Read, Update, Delete) completa com um frontend em **Angular 5** e um backend em **ASP.NET Core 8.0** utilizando **MySQL** seguindo padrões de design como Repository Pattern e Service Layer.
 
-🏗️ Arquitetura do Sistema
+## 🏗️ Arquitetura do Sistema
 A aplicação foi construida para separar responsabilidades, facilitando a manutenção e testes:
 
-Controller: Apenas gerencia as rotas e respostas HTTP.
-Service Layer: Centraliza a lógica de negócio.
-Repository Pattern: Isola o acesso a dados (EF Core) da lógica de negócio.
-Dependency Injection: Acoplamento fraco entre as camadas.
+- **Controller:** Apenas gerencia as rotas e respostas HTTP.
+- **Service Layer:** Centraliza a lógica de negócio.
+- **Repository Pattern:** Isola o acesso a dados (EF Core) da lógica de negócio.
+- **Dependency Injection:** Acoplamento fraco entre as camadas.
 
 ## 🛠️ Tecnologias e Versões
 
